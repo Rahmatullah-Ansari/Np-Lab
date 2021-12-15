@@ -13,7 +13,6 @@ w = new Scanner(System.in);
 s = new Socket("localhost",6432); 
 DataOutputStream dout=new DataOutputStream(s.getOutputStream()); 
 String number; 
-while(true){
     number=w.nextLine(); 
     dout.writeUTF(number); 
     dout.flush(); 
@@ -21,7 +20,8 @@ while(true){
     BufferedReader br=new BufferedReader(new InputStreamReader(s.getInputStream()));
     String msg=br.readLine();
     System.out.println("Hexadecimal of "+number+" = "+msg);
-}
+w.close();
+s.close();
 }
 catch(Exception e)
 {
