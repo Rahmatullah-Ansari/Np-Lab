@@ -1,0 +1,1 @@
+Write a client program that gets no. from user and sends the no. to server for conversion into hexadecimal and gets the result from the server.
