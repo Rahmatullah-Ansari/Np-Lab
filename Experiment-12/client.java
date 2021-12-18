@@ -13,15 +13,18 @@ w = new Scanner(System.in);
 s = new Socket("localhost",6432); 
 DataOutputStream dout=new DataOutputStream(s.getOutputStream()); 
 String number; 
-    number=w.nextLine(); 
-    dout.writeUTF(number); 
-    dout.flush(); 
-    dout.close();
-    BufferedReader br=new BufferedReader(new InputStreamReader(s.getInputStream()));
-    String msg=br.readLine();
-    System.out.println("Hexadecimal of "+number+" = "+msg);
-w.close();
-s.close();
+    number=w.nextLine();
+    if (number != "0"){
+        dout.writeUTF(number);
+        BufferedReader br=new BufferedReader(new InputStreamReader(s.getInputStream()));
+        String msg=br.readLine();
+        System.out.println("Hexadecimal of "+number+" = "+msg);
+    }else{
+        dout.flush(); 
+        dout.close();
+        w.close();
+        s.close();
+    }
 }
 catch(Exception e)
 {
